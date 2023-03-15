@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { privateRoutes, publicRoutes } from './routes';
+import { CHAT_ROUTE, LOGIN_ROUTE } from './utils/constants';
+
+import MainLayout from './layouts/MainLayout';
+
 import './App.css';
 
 function App() {
+  const user = false;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="*"
+          element={<Navigate to={user ? CHAT_ROUTE : LOGIN_ROUTE} />}
+        />
+        <Route path="/" element={<MainLayout />}>
+          {user
+            ? privateRoutes.map(({ path, Component }) => (
+                <Route path={path} element={Component} />
+              ))
+            : publicRoutes.map(({ path, Component }) => (
+                <Route path={path} element={Component} />
+              ))}
+        </Route>
+        <Route
+          path="*"
+          element={<Navigate to={user ? CHAT_ROUTE : LOGIN_ROUTE} />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
