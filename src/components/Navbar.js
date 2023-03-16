@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-
+import { useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -8,15 +8,18 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { LOGIN_ROUTE } from '../utils/constants';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Context } from '../index';
 // import Avatar from '@mui/material/Avatar';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const user = false;
+  const { auth } = useContext(Context);
+  const [user] = useAuthState(auth);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <IconButton
             size="large"
@@ -32,7 +35,13 @@ const Navbar = () => {
             Chat App
           </Typography>
           {user ? (
-            <Button color="inherit" onClick={() => navigate('/')}>
+            <Button
+              color="inherit"
+              onClick={() => {
+                auth.signOut();
+                navigate('/');
+              }}
+            >
               Logout
             </Button>
           ) : (
