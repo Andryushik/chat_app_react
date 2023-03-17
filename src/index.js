@@ -1,12 +1,8 @@
 import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import { initializeApp } from 'firebase/app';
-// import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-// import 'firebase/compat/firestore';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-// import { getStorage } from 'firebase/storage';
 import './index.css';
 import App from './App';
 import '@fontsource/roboto/300.css';
@@ -15,7 +11,6 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 // import reportWebVitals from './reportWebVitals';
 
-// Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyCjLhIUsfBG4ywrVVoBk_x_r-c9MTpvGIk',
   authDomain: 'chat-react-a3d2e.firebaseapp.com',
@@ -26,13 +21,8 @@ const firebaseConfig = {
 };
 
 const Context = createContext([]);
-
 const app = initializeApp(firebaseConfig);
-// firebase.initializeApp(firebaseConfig);
-// const auth = firebase.auth();
-// const firestore = firebase.firestore();
 const auth = getAuth(app);
-// const firestore = getFirestore(app);
 const db = getFirestore(app);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

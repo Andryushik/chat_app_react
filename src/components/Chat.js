@@ -1,5 +1,13 @@
 import { useContext, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  orderBy,
+  query,
+} from 'firebase/firestore';
 import { Context } from '../index';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -25,12 +33,10 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
-import { styleModal, styleFab, messages } from '../utils/constants';
+import useFirestore from '../hooks/useFirestore';
+import { styleModal, styleFab } from '../utils/constants';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import Loader from './Loader';
 
 const Chat = () => {
   const { auth, db } = useContext(Context);
@@ -40,50 +46,80 @@ const Chat = () => {
   const handleClose = () => setOpen(false);
   const [chatName, setChatName] = useState(`New Chat`);
   const [message, setMessage] = useState('');
+  // const [messages, loading, error] = useFirestore();
 
-  const sendMessage = () => {
+  const [messages, loading, error] = useCollectionData(
+    query(collection(db, 'messages'), orderBy('timestamp', 'desc')),
+    {
+      snapshotListenOptions: { includeMetadataChanges: true },
+    },
+  );
+
+  const sendMessage = async () => {
+    await addDoc(collection(db, 'messages'), {
+      uid: user.uid,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      message: message,
+      timestamp: serverTimestamp(),
+    });
     setMessage('');
-    // db.collection('chats').add({
-    //   name: chatName,
-    //   messages: [message],
-    // });
   };
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return console.log(error);
+  }
+
+  console.log('reload');
 
   return (
     <>
       <CssBaseline />
-      <Paper square sx={{ pb: '50px' }}>
+      <Paper square sx={{ pb: '50px', px: 5 }}>
         <Typography
           variant="h5"
           gutterBottom
           component="div"
           sx={{ p: 2, pt: 10, pb: 0 }}
         >
-          Inbox
+          Chat name
         </Typography>
         <List sx={{ mb: 2 }}>
-          {messages.map(({ id, primary, secondary, person }) => (
-            <div key={id}>
-              {id === 1 && (
-                <ListSubheader sx={{ bgcolor: 'background.paper' }}>
-                  Today
-                </ListSubheader>
-              )}
-
-              {id === 3 && (
-                <ListSubheader sx={{ bgcolor: 'background.paper' }}>
-                  Yesterday
-                </ListSubheader>
-              )}
-
-              <ListItem button>
-                <ListItemAvatar>
-                  <Avatar alt="Profile Picture" src={person} />
-                </ListItemAvatar>
-                <ListItemText primary={primary} secondary={secondary} />
-              </ListItem>
-            </div>
-          ))}
+          {messages &&
+            messages.map(
+              ({ id, timestamp, displayName, message, photoURL, uid }) => (
+                <div key={timestamp}>
+                  <ListSubheader
+                    sx={{
+                      bgcolor: 'background.paper',
+                      marginLeft: user.uid === uid ? 'auto' : '10px',
+                    }}
+                  >
+                    send {timestamp?.toDate().toString().slice(0, 25)}
+                  </ListSubheader>
+                  <ListItem
+                    button
+                    sx={{
+                      minWidth: '20%',
+                      border:
+                        user.uid === uid ? '1px solid blue' : '2px solid green',
+                      borderRadius: '25px',
+                      marginLeft: user.uid === uid ? 'auto' : '10px',
+                      width: 'fit-content',
+                    }}
+                  >
+                    <ListItemAvatar>
+                      <Avatar alt="Profile Picture" src={photoURL} />
+                    </ListItemAvatar>
+                    <ListItemText primary={displayName} secondary={message} />
+                  </ListItem>
+                </div>
+              ),
+            )}
         </List>
       </Paper>
 
@@ -161,7 +197,6 @@ const Chat = () => {
               onChange={(event) => {
                 setMessage(event.target.value);
               }}
-              // label="Your message..."
               variant="standard"
               InputProps={{ disableUnderline: true }}
               sx={{

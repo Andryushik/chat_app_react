@@ -26,7 +26,20 @@ export const styleFab = {
   // margin: '0 auto',
 };
 
-export const messages = [
+// export const styleMessage = {
+//   minWidth: '20%',
+//   border: user.uid === uid ? '1px solid blue' : '2px solid green',
+//   borderRadius: '25px',
+//   marginLeft: user.uid === uid ? 'auto' : '10px',
+//   width: 'fit-content',
+// };
+
+// export const styleMessageDate = {
+//   bgcolor: 'background.paper',
+//   marginLeft: user.uid === uid ? 'auto' : '10px',
+// };
+
+export const messagesArr = [
   {
     id: 1,
     primary: 'Brunch this week?',
