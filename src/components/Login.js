@@ -9,15 +9,16 @@ import Paper from '@mui/material/Paper';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { useContext } from 'react';
-import firebase from 'firebase/compat/app';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+// import firebase from 'firebase/compat/app';
 import { Context } from '../index';
 
 const Login = () => {
-  const { auth } = useContext(Context);
+  const { auth, db } = useContext(Context);
 
   const login = async () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    const { user } = await auth.signInWithPopup(provider);
+    const provider = new GoogleAuthProvider();
+    const { user } = await signInWithPopup(auth, provider);
     console.log(user);
   };
 

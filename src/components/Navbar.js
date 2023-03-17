@@ -36,7 +36,7 @@ const Navbar = () => {
           </Typography>
           {user ? (
             <Button
-              color="inherit"
+              variant="contained"
               onClick={() => {
                 auth.signOut();
                 navigate('/');
@@ -45,7 +45,7 @@ const Navbar = () => {
               Logout
             </Button>
           ) : (
-            <Button color="inherit" onClick={() => navigate(LOGIN_ROUTE)}>
+            <Button variant="contained" onClick={() => navigate(LOGIN_ROUTE)}>
               Login
             </Button>
           )}

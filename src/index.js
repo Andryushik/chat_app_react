@@ -1,10 +1,11 @@
 import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
-// import { initializeApp } from 'firebase/app';
-import firebase from 'firebase/compat/app';
+import { initializeApp } from 'firebase/app';
+// import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
-// import { getAuth } from 'firebase/auth';
+// import 'firebase/compat/firestore';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 // import { getStorage } from 'firebase/storage';
 import './index.css';
 import App from './App';
@@ -12,7 +13,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -26,17 +27,18 @@ const firebaseConfig = {
 
 const Context = createContext([]);
 
-// const app = initializeApp(firebaseConfig);
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const firestore = firebase.firestore();
-// const auth = getAuth(app);
+const app = initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
+// const auth = firebase.auth();
+// const firestore = firebase.firestore();
+const auth = getAuth(app);
 // const firestore = getFirestore(app);
+const db = getFirestore(app);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Context.Provider value={{ firebase, auth, firestore }}>
+    <Context.Provider value={{ auth, db }}>
       <App />
     </Context.Provider>
   </React.StrictMode>,
@@ -45,6 +47,6 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();
 
 export { Context };
