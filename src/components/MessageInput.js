@@ -3,7 +3,6 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import { GlobalContext } from '../context/GlobalState';
 import addMessage from '../utils/addMessage';
 
@@ -28,10 +27,9 @@ const MessageInput = () => {
         sx={{
           display: 'flex',
           alignItems: 'flex-end',
-          width: '70%',
+          minWidth: '70%',
         }}
       >
-        <AccountCircle sx={{ color: 'action.active', my: 0.7 }} />
         <form
           className="form-input"
           noValidate
