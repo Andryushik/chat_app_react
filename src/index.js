@@ -1,5 +1,6 @@
 import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
@@ -20,10 +21,12 @@ const firebaseConfig = {
   appId: '1:55000285649:web:273d8699ea118d788a20f0',
 };
 
+// TODO: add context hook or element
 const Context = createContext([]);
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+// const [user] = useAuthState(auth);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

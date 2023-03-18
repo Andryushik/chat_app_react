@@ -24,6 +24,8 @@ const MessageInput = () => {
     setMessage('');
   };
 
+  if (!user) return null;
+
   return (
     <>
       <Box

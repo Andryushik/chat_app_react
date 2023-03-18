@@ -4,6 +4,8 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -35,15 +37,20 @@ const Navbar = () => {
             Chat App
           </Typography>
           {user ? (
-            <Button
-              variant="contained"
-              onClick={() => {
-                auth.signOut();
-                navigate('/');
-              }}
-            >
-              Logout
-            </Button>
+            <>
+              <ListItemAvatar>
+                <Avatar alt="Profile Picture" src={user.photoURL} />
+              </ListItemAvatar>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  auth.signOut();
+                  navigate('/');
+                }}
+              >
+                Logout
+              </Button>
+            </>
           ) : (
             <Button variant="contained" onClick={() => navigate(LOGIN_ROUTE)}>
               Login

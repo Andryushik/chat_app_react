@@ -17,8 +17,7 @@ const Login = () => {
 
   const login = async () => {
     const provider = new GoogleAuthProvider();
-    const { user } = await signInWithPopup(auth, provider);
-    console.log('add username in header', user.displayName);
+    await signInWithPopup(auth, provider);
   };
 
   return (
