@@ -10,11 +10,11 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { LOGIN_ROUTE } from '../utils/constants';
-import { GlobalContext } from '../context/GlobalState';
+import { AuthContext } from '../context/GlobalState';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { auth, user } = useContext(GlobalContext);
+  const { auth, user } = useContext(AuthContext);
 
   return (
     <Box sx={{ flexGrow: 1 }}>

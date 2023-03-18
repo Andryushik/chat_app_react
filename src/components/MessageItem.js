@@ -4,10 +4,10 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import Avatar from '@mui/material/Avatar';
-import { GlobalContext } from '../context/GlobalState';
+import { AuthContext } from '../context/GlobalState';
 
 const MessageItem = ({ timestamp, displayName, message, photoURL, uid }) => {
-  const { user } = useContext(GlobalContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <>

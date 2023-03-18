@@ -2,14 +2,14 @@ import { useContext } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { privateRoutes, publicRoutes } from './routes';
 import { CHAT_ROUTE, LOGIN_ROUTE } from './utils/constants';
-import { GlobalContext } from './context/GlobalState';
+import { AuthContext } from './context/GlobalState';
 
 import MainLayout from './layouts/MainLayout';
 import Loader from './components/Loader';
 import './App.css';
 
 function App() {
-  const { user, loading, error } = useContext(GlobalContext);
+  const { user, loading, error } = useContext(AuthContext);
 
   if (loading) return <Loader />;
   if (error) return <p>Error: {error.message}</p>;

@@ -3,17 +3,17 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
-import { GlobalContext } from '../context/GlobalState';
+import { AuthContext } from '../context/GlobalState';
 import addMessage from '../utils/addMessage';
 
 const MessageInput = () => {
-  const { user, db } = useContext(GlobalContext);
+  const { user, db } = useContext(AuthContext);
   const [message, setMessage] = useState('');
 
   const sendMessage = async (event) => {
     event.preventDefault();
 
-    if (!message) return;
+    if (!message) return alert('Please enter a message');
 
     await addMessage(message, user, db);
     setMessage('');

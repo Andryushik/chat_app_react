@@ -6,13 +6,13 @@ import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
 import Loader from '../components/Loader';
 import MessageItem from '../components/MessageItem';
-import { GlobalContext } from '../context/GlobalState';
+import { AuthContext } from '../context/GlobalState';
 
 const Chat = () => {
-  const { db } = useContext(GlobalContext);
+  const { db } = useContext(AuthContext);
 
   const [messages, loading, error] = useCollectionData(
-    query(collection(db, 'messages'), orderBy('timestamp', 'desc')),
+    query(collection(db, 'messages'), orderBy('timestamp')),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
     },

@@ -7,7 +7,7 @@ import { getFirestore } from 'firebase/firestore';
 
 const initialState = [];
 
-export const GlobalContext = createContext(initialState);
+export const AuthContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
   const app = initializeApp(firebaseConfig);
@@ -16,8 +16,8 @@ export const GlobalProvider = ({ children }) => {
   const [user, loading, error] = useAuthState(auth);
 
   return (
-    <GlobalContext.Provider value={{ auth, db, user, loading, error }}>
+    <AuthContext.Provider value={{ auth, db, user, loading, error }}>
       {children}
-    </GlobalContext.Provider>
+    </AuthContext.Provider>
   );
 };

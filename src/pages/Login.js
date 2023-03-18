@@ -11,10 +11,10 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { GlobalContext } from '../context/GlobalState';
+import { AuthContext } from '../context/GlobalState';
 
 const Login = () => {
-  const { auth } = useContext(GlobalContext);
+  const { auth } = useContext(AuthContext);
 
   const signInGoogle = () => {
     const provider = new GoogleAuthProvider();
