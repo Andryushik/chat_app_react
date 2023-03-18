@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import GoogleButton from 'react-google-button';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,12 +11,10 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { useContext } from 'react';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { Context } from '../index';
+import { GlobalContext } from '../context/GlobalState';
 
 const Login = () => {
-  const { auth } = useContext(Context);
+  const { auth } = useContext(GlobalContext);
 
   const signInGoogle = () => {
     const provider = new GoogleAuthProvider();

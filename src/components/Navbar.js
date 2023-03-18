@@ -10,14 +10,11 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { LOGIN_ROUTE } from '../utils/constants';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { Context } from '../index';
-// import Avatar from '@mui/material/Avatar';
+import { GlobalContext } from '../context/GlobalState';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { auth } = useContext(Context);
-  const [user] = useAuthState(auth);
+  const { auth, user } = useContext(GlobalContext);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -30,7 +27,6 @@ const Navbar = () => {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>

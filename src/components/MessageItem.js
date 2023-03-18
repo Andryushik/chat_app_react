@@ -1,15 +1,13 @@
 import { useContext } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import Avatar from '@mui/material/Avatar';
-import { Context } from '../index';
+import { GlobalContext } from '../context/GlobalState';
 
 const MessageItem = ({ timestamp, displayName, message, photoURL, uid }) => {
-  const { auth } = useContext(Context);
-  const [user] = useAuthState(auth);
+  const { user } = useContext(GlobalContext);
 
   return (
     <>

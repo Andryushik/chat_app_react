@@ -1,15 +1,15 @@
 import { useContext } from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { collection, orderBy, query } from 'firebase/firestore';
-import { Context } from '../index';
 import CssBaseline from '@mui/material/CssBaseline';
 import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
 import Loader from '../components/Loader';
 import MessageItem from '../components/MessageItem';
+import { GlobalContext } from '../context/GlobalState';
 
 const Chat = () => {
-  const { db } = useContext(Context);
+  const { db } = useContext(GlobalContext);
 
   const [messages, loading, error] = useCollectionData(
     query(collection(db, 'messages'), orderBy('timestamp', 'desc')),

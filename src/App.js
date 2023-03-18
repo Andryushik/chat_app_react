@@ -1,18 +1,15 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { privateRoutes, publicRoutes } from './routes';
 import { CHAT_ROUTE, LOGIN_ROUTE } from './utils/constants';
-import { Context } from './index';
+import { GlobalContext } from './context/GlobalState';
 
 import MainLayout from './layouts/MainLayout';
 import Loader from './components/Loader';
 import './App.css';
-// import AppRouter from './components/AppRouter';
 
 function App() {
-  const { auth } = useContext(Context);
-  const [user, loading, error] = useAuthState(auth);
+  const { user, loading, error } = useContext(GlobalContext);
 
   if (loading) return <Loader />;
   if (error) return <p>Error: {error.message}</p>;
