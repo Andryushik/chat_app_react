@@ -1,3 +1,4 @@
+import GoogleButton from 'react-google-button';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Avatar from '@mui/material/Avatar';
@@ -15,9 +16,9 @@ import { Context } from '../index';
 const Login = () => {
   const { auth } = useContext(Context);
 
-  const login = async () => {
+  const signInGoogle = () => {
     const provider = new GoogleAuthProvider();
-    await signInWithRedirect(auth, provider);
+    signInWithRedirect(auth, provider);
   };
 
   return (
@@ -38,9 +39,15 @@ const Login = () => {
           Sign in
         </Typography>
         <Paper elevation={5} sx={{ p: 5, m: 3 }}>
-          <Button onClick={login} fullWidth variant="contained" sx={{ my: 2 }}>
+          <Button
+            onClick={signInGoogle}
+            fullWidth
+            variant="contained"
+            sx={{ my: 2 }}
+          >
             Enter with Google
           </Button>
+          <GoogleButton onClick={signInGoogle} />
           <Grid container spacing={3}>
             <Grid item xs>
               <Link href="#" variant="body2">
