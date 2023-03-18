@@ -8,7 +8,7 @@ import { Context } from './index';
 import MainLayout from './layouts/MainLayout';
 import Loader from './components/Loader';
 import './App.css';
-import AppRouter from './components/AppRouter';
+// import AppRouter from './components/AppRouter';
 
 function App() {
   const { auth } = useContext(Context);
