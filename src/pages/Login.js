@@ -38,7 +38,17 @@ const Login = () => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Paper elevation={5} sx={{ p: 5, m: 3 }}>
+        <Paper
+          elevation={5}
+          sx={{
+            p: 5,
+            m: 3,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <GoogleButton onClick={signInGoogle} />
           <Button
             onClick={signInGoogle}
             fullWidth
@@ -47,7 +57,6 @@ const Login = () => {
           >
             Enter with Google
           </Button>
-          <GoogleButton onClick={signInGoogle} />
           <Grid container spacing={3}>
             <Grid item xs>
               <Link href="#" variant="body2">
