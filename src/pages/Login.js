@@ -10,11 +10,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { useContext } from 'react';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-// import firebase from 'firebase/compat/app';
 import { Context } from '../index';
 
 const Login = () => {
-  const { auth, db } = useContext(Context);
+  const { auth } = useContext(Context);
 
   const login = async () => {
     const provider = new GoogleAuthProvider();

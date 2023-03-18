@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-import './index.css';
 import App from './App';
+import './index.css';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-// import reportWebVitals from './reportWebVitals';
 
+// TODO: Add your config settings
 const firebaseConfig = {
   apiKey: 'AIzaSyCjLhIUsfBG4ywrVVoBk_x_r-c9MTpvGIk',
   authDomain: 'chat-react-a3d2e.firebaseapp.com',
@@ -27,16 +27,9 @@ const db = getFirestore(app);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <Context.Provider value={{ auth, db }}>
-      <App />
-    </Context.Provider>
-  </React.StrictMode>,
+  <Context.Provider value={{ auth, db }}>
+    <App />
+  </Context.Provider>,
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
 
 export { Context };

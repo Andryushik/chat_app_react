@@ -1,11 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import {
-  collection,
-  query,
-  getDocs,
-  serverTimestamp,
-  orderBy,
-} from 'firebase/firestore';
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { Context } from '../index';
 
 const useFirestore = () => {
@@ -15,23 +9,28 @@ const useFirestore = () => {
   const { db } = useContext(Context);
 
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const q = query(
-          collection(db, 'messages'),
-          orderBy('timestamp', 'desc'),
-        );
-        const querySnapshot = await getDocs(q);
-        setMessages(querySnapshot.docs.map((doc) => doc.data()));
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+    try {
+      const q = query(collection(db, 'messages'), orderBy('timestamp', 'desc'));
 
-    getData();
-  }, [db]);
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        let messagesTemp = [];
+        querySnapshot.forEach((doc) => {
+          messagesTemp.push({
+            ...doc.data(),
+            id: doc.id,
+          });
+        });
+        setMessages(messagesTemp);
+        console.log(messagesTemp);
+      });
+
+      return unsubscribe();
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   return [messages, loading, error];
 };
