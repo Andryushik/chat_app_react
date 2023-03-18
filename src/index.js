@@ -1,6 +1,6 @@
 import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
-import { useAuthState } from 'react-firebase-hooks/auth';
+// import { useAuthState } from 'react-firebase-hooks/auth';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
