@@ -19,7 +19,7 @@ const Chat = () => {
     },
   );
 
-  const ref = useChatScroll(messages); // FIXME:  doesn't work !
+  const refScroll = useChatScroll(messages);
 
   if (loading) {
     return <Loader />;
@@ -29,19 +29,17 @@ const Chat = () => {
     return <p>Error: {error.message}</p>;
   }
 
-  console.log('messages', messages);
+  console.log('chat render', messages);
 
   return (
     <>
       <CssBaseline />
-      <Paper square sx={{ pb: '50px', px: 5 }}>
+      <Paper ref={refScroll} square sx={{ pb: '50px', px: 5 }}>
         <List sx={{ mb: 2, mt: 8 }}>
-          <div ref={ref}>
-            {messages &&
-              messages.map((props, index) => (
-                <MessageItem {...props} key={index} />
-              ))}
-          </div>
+          {messages &&
+            messages.map((props, index) => (
+              <MessageItem {...props} key={index} />
+            ))}
         </List>
       </Paper>
     </>

@@ -5,7 +5,10 @@ const useChatScroll = (messages) => {
 
   useEffect(() => {
     if (ref.current) {
-      ref.current.scrollTop = ref.current.scrollHeight;
+      ref.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+      });
     }
   }, [messages]);
 
