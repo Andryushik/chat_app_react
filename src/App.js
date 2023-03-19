@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { privateRoutes, publicRoutes } from './routes';
 import { CHAT_ROUTE, LOGIN_ROUTE } from './utils/constants';
 import { AuthContext } from './context/GlobalState';
-
 import MainLayout from './layouts/MainLayout';
 import Loader from './components/Loader';
 import './App.css';
@@ -30,10 +29,6 @@ function App() {
                 <Route key={path} path={path} element={Component} />
               ))}
         </Route>
-        <Route
-          path="*"
-          element={<Navigate to={user ? CHAT_ROUTE : LOGIN_ROUTE} />}
-        />
       </Routes>
     </BrowserRouter>
   );

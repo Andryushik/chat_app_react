@@ -14,9 +14,10 @@ export const GlobalProvider = ({ children }) => {
   const db = getFirestore(app);
   const auth = getAuth(app);
   const [user, loading, error] = useAuthState(auth);
+  let unread = false;
 
   return (
-    <AuthContext.Provider value={{ auth, db, user, loading, error }}>
+    <AuthContext.Provider value={{ auth, db, user, loading, error, unread }}>
       {children}
     </AuthContext.Provider>
   );

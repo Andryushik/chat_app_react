@@ -3,14 +3,14 @@ import { useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import { LOGIN_ROUTE } from '../utils/constants';
+import { HOME_ROUTE, LOGIN_ROUTE } from '../utils/constants';
 import { AuthContext } from '../context/GlobalState';
+import FadeMenu from './FadeMenu';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -20,18 +20,20 @@ const Navbar = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            HYF Chat App
-          </Typography>
+          <div>
+            <FadeMenu />
+          </div>
+          <div style={{ width: '100%' }}>
+            <Link
+              href={HOME_ROUTE}
+              color="inherit"
+              variant="h5"
+              underline="none"
+              sx={{ flexGrow: 1 }}
+            >
+              HYF Chat App
+            </Link>
+          </div>
           {user ? (
             <>
               <ListItemAvatar>
@@ -41,16 +43,21 @@ const Navbar = () => {
                 variant="contained"
                 onClick={() => {
                   auth.signOut();
-                  navigate('/');
+                  navigate(HOME_ROUTE);
                 }}
               >
                 Logout
               </Button>
             </>
           ) : (
-            <Button variant="contained" onClick={() => navigate(LOGIN_ROUTE)}>
-              Login
-            </Button>
+            <>
+              <ListItemAvatar>
+                <AccountCircleIcon fontSize="large" sx={{ mt: 0.7 }} />
+              </ListItemAvatar>
+              <Button variant="contained" onClick={() => navigate(LOGIN_ROUTE)}>
+                Login
+              </Button>
+            </>
           )}
         </Toolbar>
       </AppBar>

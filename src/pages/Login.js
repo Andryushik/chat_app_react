@@ -4,7 +4,6 @@ import GoogleButton from 'react-google-button';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -12,6 +11,7 @@ import Paper from '@mui/material/Paper';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { AuthContext } from '../context/GlobalState';
+import { HOME_ROUTE } from '../utils/constants';
 
 const Login = () => {
   const { auth } = useContext(AuthContext);
@@ -25,7 +25,7 @@ const Login = () => {
     <Container>
       <CssBaseline />
       <Box
-        marginTop={10}
+        marginTop={20}
         sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -49,25 +49,18 @@ const Login = () => {
           }}
         >
           <GoogleButton onClick={signInGoogle} />
-          <Button
-            onClick={signInGoogle}
-            fullWidth
-            variant="contained"
-            sx={{ my: 2 }}
-          >
-            Enter with Google
-          </Button>
-          <Grid container spacing={3}>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
+          <Grid container sx={{ mt: 4 }}>
+            <div
+              style={{
+                width: '100%',
+                display: 'flex',
+                alignContent: 'center',
+              }}
+            >
+              <Link href={HOME_ROUTE} variant="body1" sx={{ margin: '0 auto' }}>
+                Homepage
               </Link>
-            </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
+            </div>
           </Grid>
         </Paper>
       </Box>

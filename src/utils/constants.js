@@ -1,3 +1,4 @@
+export const HOME_ROUTE = '/';
 export const LOGIN_ROUTE = '/login';
 export const CHAT_ROUTE = '/chat';
 
@@ -17,7 +18,6 @@ export const styleModal = {
 };
 
 export const styleFab = {
-  position: 'absolute',
   zIndex: 1,
   left: 0,
   right: 0,
