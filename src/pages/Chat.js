@@ -4,15 +4,12 @@ import List from '@mui/material/List';
 import Loader from '../components/Loader';
 import MessageItem from '../components/MessageItem';
 import useChatScroll from '../hooks/useChatScroll';
-import useNotification from '../hooks/useNotification';
 import useGetMessages from '../hooks/useGetMessages';
 
 const Chat = () => {
   const [messages, loading, error] = useGetMessages();
 
   const refScroll = useChatScroll(messages.length);
-
-  useNotification(messages.length);
 
   if (loading) {
     return <Loader />;
