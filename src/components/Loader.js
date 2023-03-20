@@ -1,28 +1,40 @@
 import React from 'react';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import CircularProgress from '@mui/material/CircularProgress';
+import Skeleton from '@mui/material/Skeleton';
+import Stack from '@mui/material/Stack';
 
 const Loader = () => {
   return (
     <Container>
       <CssBaseline />
-      <Box
-        marginTop={10}
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <Paper elevation={5} sx={{ p: 5, m: 3 }}>
-          <Typography variant="h6">Loading...</Typography>
-          <CircularProgress color="secondary" />
-        </Paper>
-      </Box>
+      <Stack spacing={1}>
+        <Skeleton
+          animation="wave"
+          variant="rectangular"
+          width={1200}
+          height={150}
+        />
+        <Skeleton
+          animation="wave"
+          variant="circular"
+          width={100}
+          height={100}
+        />
+        <Skeleton animation="wave" variant="rounded" width={500} height={60} />
+        <Skeleton animation="wave" variant="rounded" width={900} height={40} />
+        <Skeleton animation="wave" variant="rounded" width={200} height={30} />
+        <Skeleton animation="wave" variant="rounded" width={300} height={80} />
+        <Skeleton animation="wave" variant="rounded" width={1100} height={50} />
+        <Skeleton animation="wave" variant="rounded" width={300} height={20} />
+        <Skeleton animation="wave" variant="rounded" width={900} height={100} />
+        <Skeleton
+          animation="wave"
+          variant="rectangular"
+          width={1200}
+          height={150}
+        />
+      </Stack>
     </Container>
   );
 };
