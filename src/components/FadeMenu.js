@@ -7,10 +7,11 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { HOME_ROUTE, CHAT_ROUTE, LOGIN_ROUTE } from '../utils/constants';
 import { AuthContext } from '../context/GlobalState';
+import deleteChatHistory from '../utils/deleteChatHistory';
 
 const FadeMenu = () => {
   const navigate = useNavigate();
-  const { auth } = useContext(AuthContext);
+  const { auth, user, db } = useContext(AuthContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -54,6 +55,7 @@ const FadeMenu = () => {
         >
           HOME
         </MenuItem>
+
         <MenuItem
           onClick={() => {
             navigate(CHAT_ROUTE);
@@ -62,24 +64,44 @@ const FadeMenu = () => {
         >
           CHAT
         </MenuItem>
-        <MenuItem onClick={handleClose}>SETTINGS</MenuItem>
-        <MenuItem
-          onClick={() => {
-            navigate(LOGIN_ROUTE);
-            handleClose();
-          }}
-        >
-          LOGIN
-        </MenuItem>
-        <MenuItem
-          onClick={() => {
-            auth.signOut();
-            navigate(HOME_ROUTE);
-            handleClose();
-          }}
-        >
-          LOGOUT
-        </MenuItem>
+
+        {!user && (
+          <MenuItem
+            onClick={() => {
+              navigate(LOGIN_ROUTE);
+              handleClose();
+            }}
+          >
+            LOGIN
+          </MenuItem>
+        )}
+
+        {user && (
+          <div>
+            <MenuItem onClick={handleClose}>SETTINGS</MenuItem>
+            <MenuItem
+              onClick={() => {
+                auth.signOut();
+                navigate(HOME_ROUTE);
+                handleClose();
+              }}
+            >
+              LOGOUT
+            </MenuItem>
+          </div>
+        )}
+
+        {user?.uid === 'Blqb7GsqY2V3A5TxDWzmjJ0mZ7B2' ? (
+          <MenuItem
+            onClick={() => {
+              console.log(user.uid);
+              deleteChatHistory(db);
+              handleClose();
+            }}
+          >
+            CLEAN
+          </MenuItem>
+        ) : null}
       </Menu>
     </div>
   );
