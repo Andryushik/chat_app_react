@@ -6,7 +6,7 @@ import useNotification from '../hooks/useNotification';
 import useGetMessages from '../hooks/useGetMessages';
 import playNotification from '../utils/playNotification';
 
-const NewMessageIcon = () => {
+const NewNotification = () => {
   const location = useLocation();
   const [messages] = useGetMessages();
 
@@ -30,4 +30,4 @@ const NewMessageIcon = () => {
   );
 };
 
-export default NewMessageIcon;
+export default NewNotification;

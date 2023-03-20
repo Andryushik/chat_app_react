@@ -7,7 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { AuthContext } from '../context/GlobalState';
 import { styleFab } from '../utils/constants';
 import MessageInput from './MessageInput';
-import NewMessageIcon from './NewMessageIcon';
+import NewNotification from './NewNotification';
 import AddChatModal from './AddChatModal';
 
 const FooterBar = () => {
@@ -26,7 +26,7 @@ const FooterBar = () => {
     <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
       <Toolbar>
         <Fab
-          size="medium"
+          size="small"
           color="secondary"
           aria-label="New Chat"
           onClick={handleOpen}
@@ -35,7 +35,7 @@ const FooterBar = () => {
           <AddIcon />
         </Fab>
         <AddChatModal open={open} setOpen={setOpen} />
-        {user && <NewMessageIcon />}
+        {user && <NewNotification />}
         <Box sx={{ flexGrow: 1 }} />
         <MessageInput />
       </Toolbar>
