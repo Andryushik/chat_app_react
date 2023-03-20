@@ -1,9 +1,10 @@
-import { createContext } from 'react';
+import { useState, createContext } from 'react';
 import { firebaseConfig } from '../utils/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const initialState = [];
 
@@ -15,9 +16,18 @@ export const GlobalProvider = ({ children }) => {
   const auth = getAuth(app);
   const [user, loading, error] = useAuthState(auth);
 
+  const [darkMode, setDarkMode] = useState(true);
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? 'dark' : 'light',
+    },
+  });
+
   return (
-    <AuthContext.Provider value={{ auth, db, user, loading, error }}>
-      {children}
+    <AuthContext.Provider
+      value={{ auth, db, user, loading, error, darkMode, setDarkMode }}
+    >
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </AuthContext.Provider>
   );
 };

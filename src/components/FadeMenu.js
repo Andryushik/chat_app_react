@@ -94,7 +94,6 @@ const FadeMenu = () => {
         {user?.uid === 'Blqb7GsqY2V3A5TxDWzmjJ0mZ7B2' ? (
           <MenuItem
             onClick={() => {
-              console.log(user.uid);
               deleteChatHistory(db);
               handleClose();
             }}
