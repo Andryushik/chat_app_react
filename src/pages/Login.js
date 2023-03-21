@@ -1,5 +1,3 @@
-import { useContext } from 'react';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import GoogleButton from 'react-google-button';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -10,16 +8,11 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { AuthContext } from '../context/GlobalState';
 import { HOME_ROUTE } from '../utils/constants';
+import { useSignInGoogle } from '../hooks/useSignInGoogle';
 
 const Login = () => {
-  const { auth } = useContext(AuthContext);
-
-  const signInGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
-  };
+  const signIn = useSignInGoogle();
 
   return (
     <Container data-testid="login-page">
@@ -48,7 +41,7 @@ const Login = () => {
             alignItems: 'center',
           }}
         >
-          <GoogleButton onClick={signInGoogle} />
+          <GoogleButton onClick={signIn} />
           <Grid container sx={{ mt: 4 }}>
             <div
               style={{

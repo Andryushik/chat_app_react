@@ -2,8 +2,8 @@ import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import Login from '../Login';
 
-describe('Login page', () => {
-  it('Renders LOGIN page', async () => {
+describe('LOGIN page', () => {
+  it('Renders LOGIN page', () => {
     render(
       <MemoryRouter initialEntries={['/login']}>
         <Login />
@@ -22,13 +22,13 @@ describe('Login page', () => {
     expect(screen.getByTestId('login-page')).toBeInTheDocument();
   });
 
-  // it('renders chat name homepage link', () => {
-  //   render(<Chat />);
-  //   const linkElement = screen.getByText(/HYF Chat App/i);
-  //   expect(linkElement).toBeInTheDocument();
-  // });
-  // it('Displays li item', () => {
-  //   render(<Chat />);
-  //   expect(screen.getAllByRole('link')).toEqual(3);
-  // });
+  it('Renders Google Sign in button', () => {
+    render(
+      <MemoryRouter initialEntries={['/login']}>
+        <Login />
+      </MemoryRouter>,
+    );
+    const googleButton = screen.getByRole('button', { name: /google/i });
+    expect(googleButton).toBeInTheDocument();
+  });
 });
