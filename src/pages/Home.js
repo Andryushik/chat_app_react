@@ -18,7 +18,7 @@ const Home = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <Container>
+    <Container data-testid="home-page">
       <CssBaseline />
       <Box
         marginTop={20}

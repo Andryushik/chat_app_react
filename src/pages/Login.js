@@ -22,7 +22,7 @@ const Login = () => {
   };
 
   return (
-    <Container>
+    <Container data-testid="login-page">
       <CssBaseline />
       <Box
         marginTop={20}

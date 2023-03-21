@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import { GlobalProvider } from './context/GlobalState';
 import App from './App';
@@ -11,6 +12,8 @@ import '@fontsource/roboto/700.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <GlobalProvider>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </GlobalProvider>,
 );

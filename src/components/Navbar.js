@@ -57,13 +57,15 @@ const Navbar = () => {
                 <Avatar alt="Profile Picture" src={user.photoURL} />
               </ListItemAvatar>
               <Button
+                size="large"
                 variant="contained"
                 onClick={() => {
                   auth.signOut();
                   navigate(HOME_ROUTE);
                 }}
+                sx={{ minWidth: 'max-content' }}
               >
-                Logout
+                Sign out
               </Button>
             </>
           ) : (

@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -46,14 +47,20 @@ const MessageInput = () => {
             variant="standard"
             InputProps={{ disableUnderline: true }}
             sx={{
-              backgroundColor: 'white',
+              input: { color: 'black' },
+              bgcolor: 'white',
               borderRadius: 7,
               px: 3,
-              py: 0.4,
+              py: 0.6,
               mx: 2,
             }}
           />
-          <Button type="submit" variant="contained" endIcon={<SendIcon />}>
+          <Button
+            size="large"
+            type="submit"
+            variant="contained"
+            endIcon={<SendIcon />}
+          >
             Send
           </Button>
         </form>

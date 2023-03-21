@@ -1,4 +1,5 @@
 import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
 import Loader from '../components/Loader';
@@ -20,15 +21,19 @@ const Chat = () => {
   }
 
   return (
-    <>
+    <Container data-testid="chat-page">
       <CssBaseline />
-      <Paper ref={refScroll} square sx={{ pb: '50px', px: 5 }}>
+      <Paper
+        ref={refScroll}
+        square
+        sx={{ pb: '50px', px: 5, minHeight: '90vh' }}
+      >
         <List sx={{ mb: 2, mt: 8 }}>
           {messages &&
             messages.map((doc) => <MessageItem {...doc} key={doc.id} />)}
         </List>
       </Paper>
-    </>
+    </Container>
   );
 };
 
