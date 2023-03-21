@@ -24,12 +24,10 @@ export const GlobalProvider = ({ children }) => {
   });
 
   return (
-    <ThemeProvider theme={theme}>
-      <AuthContext.Provider
-        value={{ auth, db, user, loading, error, darkMode, setDarkMode }}
-      >
-        {children}
-      </AuthContext.Provider>
-    </ThemeProvider>
+    <AuthContext.Provider
+      value={{ auth, db, user, loading, error, darkMode, setDarkMode }}
+    >
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    </AuthContext.Provider>
   );
 };
