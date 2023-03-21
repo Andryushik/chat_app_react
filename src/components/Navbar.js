@@ -77,6 +77,7 @@ const Navbar = () => {
                 size="large"
                 variant="contained"
                 onClick={() => navigate(LOGIN_ROUTE)}
+                sx={{ minWidth: 'max-content' }}
               >
                 Sign in
               </Button>
