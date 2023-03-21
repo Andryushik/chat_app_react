@@ -78,7 +78,9 @@ const FadeMenu = () => {
 
         {user && (
           <div>
-            <MenuItem onClick={handleClose}>SETTINGS</MenuItem>
+            <MenuItem disabled onClick={handleClose}>
+              SETTINGS
+            </MenuItem>
             <MenuItem
               onClick={() => {
                 auth.signOut();
