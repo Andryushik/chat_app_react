@@ -14,12 +14,11 @@ const MessageItem = ({ timestamp, displayName, message, photoURL, uid }) => {
       <ListSubheader
         sx={{
           width: 'fit-content',
-          bgcolor: 'background.paper',
+          background: 'none',
           marginLeft: user.uid === uid ? 'auto' : '10px',
         }}
       >
-        Send{' '}
-        {timestamp ? timestamp.toDate().toString().slice(0, 25) : 'just now'}
+        {timestamp ? timestamp.toDate().toString().slice(0, 21) : 'just now'}
       </ListSubheader>
       <ListItem
         button

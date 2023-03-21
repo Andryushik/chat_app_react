@@ -73,8 +73,12 @@ const Navbar = () => {
               <ListItemAvatar>
                 <AccountCircleIcon fontSize="large" sx={{ mt: 0.7 }} />
               </ListItemAvatar>
-              <Button variant="contained" onClick={() => navigate(LOGIN_ROUTE)}>
-                Login
+              <Button
+                size="large"
+                variant="contained"
+                onClick={() => navigate(LOGIN_ROUTE)}
+              >
+                Sign in
               </Button>
             </>
           )}
