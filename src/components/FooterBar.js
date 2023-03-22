@@ -37,7 +37,7 @@ const FooterBar = () => {
         <AddChatModal open={open} setOpen={setOpen} />
         {user && <NewNotification />}
         <Box sx={{ flexGrow: 1 }} />
-        <MessageInput />
+        {user && <MessageInput />}
       </Toolbar>
     </AppBar>
   );

@@ -19,8 +19,6 @@ const MessageInput = () => {
     setMessage('');
   };
 
-  if (!user) return null;
-
   return (
     <>
       <Box
@@ -40,7 +38,7 @@ const MessageInput = () => {
           }}
         >
           <TextField
-            id="input-with-sx"
+            data-testid="message-input"
             fullWidth
             value={message}
             onChange={(event) => {

@@ -1,15 +1,11 @@
 import { MemoryRouter } from 'react-router-dom';
 import { render, screen, act } from '@testing-library/react';
 import { GlobalProvider } from '../context/GlobalState';
+// import { useSignInGoogle } from '../hooks/useSignInGoogle';
 import Chat from './Chat';
-// import { useSignInGoogle } from '../../hooks/useSignInGoogle';
 
 describe('Chat page', () => {
   // const signIn = useSignInGoogle();
-
-  // beforeEach(async () => {
-  //   await signIn();
-  // });
 
   it('Renders CHAT page', async () => {
     // await act(async () => await signIn());
