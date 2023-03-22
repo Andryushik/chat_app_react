@@ -4,3 +4,9 @@
   box-sizing: border-box;
   font-family: 'Roboto';
 }
+
+@media only screen and (max-width: 600px) {
+  * {
+    font-size: 75%;
+  }
+}

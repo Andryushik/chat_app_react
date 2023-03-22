@@ -1,5 +1,4 @@
 import { useState, useContext } from 'react';
-
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -32,10 +31,13 @@ const MessageInput = () => {
         }}
       >
         <form
-          className="form-input"
           noValidate
           autoComplete="off"
           onSubmit={sendMessage}
+          style={{
+            display: 'flex',
+            width: '100%',
+          }}
         >
           <TextField
             id="input-with-sx"

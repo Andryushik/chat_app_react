@@ -34,9 +34,9 @@ const Navbar = () => {
               color="inherit"
               variant="h5"
               underline="none"
-              sx={{ flexGrow: 1 }}
+              sx={{ flexGrow: 1, whiteSpace: 'nowrap' }}
             >
-              HYF Chat App
+              Chat App
             </Link>
           </div>
 

@@ -4,7 +4,7 @@ This is a simple chat web application built using React and Firebase. The app al
 
 ## Screenshot
 
-![Chats open in Safari and Chrome examples](./src/assets/Screenshot.jpg)
+![Chats screenshots from Safari and Chrome](./src/assets/Screenshot.jpg)
 
 ## Features
 
@@ -24,7 +24,7 @@ This is a simple chat web application built using React and Firebase. The app al
 1. Clone the repository: `git clone https://github.com/yourusername/your-repo.git`
 2. Install dependencies: `npm install`
 3. Create a Firebase project and enable Firebase Authentication and Firestore.
-4. Add your Firebase config object to `src/firebase.js`.
+4. Add your Firebase config .env file and using variables from `src/utils/firebase.js`.
 5. Start the app: `npm start`
 
 ## Technologies Used

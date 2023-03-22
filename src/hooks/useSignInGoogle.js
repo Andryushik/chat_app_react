@@ -5,6 +5,12 @@ import { AuthContext } from '../context/GlobalState';
 export const useSignInGoogle = () => {
   const { auth } = useContext(AuthContext);
   const provider = new GoogleAuthProvider();
-  const signIn = () => signInWithPopup(auth, provider);
+  const signIn = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
   return signIn;
 };

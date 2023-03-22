@@ -5,7 +5,6 @@ import { CHAT_ROUTE, LOGIN_ROUTE } from './utils/constants';
 import { AuthContext } from './context/GlobalState';
 import MainLayout from './layouts/MainLayout';
 import Loader from './components/Loader';
-import './App.css';
 
 function App() {
   const { user, loading, error } = useContext(AuthContext);
