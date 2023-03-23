@@ -1,13 +1,12 @@
-import { useContext } from 'react';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import Avatar from '@mui/material/Avatar';
-import { AuthContext } from '../context/GlobalState';
+import { useAuthContext } from '../context/GlobalState';
 
 const MessageItem = ({ timestamp, displayName, message, photoURL, uid }) => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuthContext();
 
   return (
     <>

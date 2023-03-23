@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { collection, orderBy, query, onSnapshot } from 'firebase/firestore';
-import { AuthContext } from '../context/GlobalState';
+import { useAuthContext } from '../context/GlobalState';
 
 const useGetMessages = () => {
   const [messages, setMessages] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { db } = useContext(AuthContext);
+  const { db } = useAuthContext();
 
   useEffect(() => {
     try {

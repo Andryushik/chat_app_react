@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,7 +8,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import { HOME_ROUTE, LOGIN_ROUTE } from '../utils/constants';
-import { AuthContext } from '../context/GlobalState';
+import { useAuthContext } from '../context/GlobalState';
 import Switch from '@mui/material/Switch';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import ModeNightIcon from '@mui/icons-material/ModeNight';
@@ -17,7 +16,7 @@ import FadeMenu from './FadeMenu';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { auth, user, darkMode, setDarkMode } = useContext(AuthContext);
+  const { auth, user, darkMode, setDarkMode } = useAuthContext();
   const handleThemeChange = () => {
     setDarkMode((prev) => !prev);
   };

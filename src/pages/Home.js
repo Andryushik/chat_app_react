@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -10,12 +9,12 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import ChatIcon from '@mui/icons-material/Chat';
 import Typography from '@mui/material/Typography';
-import { AuthContext } from '../context/GlobalState';
+import { useAuthContext } from '../context/GlobalState';
 import { LOGIN_ROUTE } from '../utils/constants';
 
 const Home = () => {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { user } = useAuthContext();
 
   return (
     <Container data-testid="home-page">

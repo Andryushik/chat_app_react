@@ -1,9 +1,8 @@
-import { useContext } from 'react';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { AuthContext } from '../context/GlobalState';
+import { useAuthContext } from '../context/GlobalState';
 
 export const useSignInGoogle = () => {
-  const { auth } = useContext(AuthContext);
+  const { auth } = useAuthContext();
   const provider = new GoogleAuthProvider();
   const signIn = async () => {
     try {

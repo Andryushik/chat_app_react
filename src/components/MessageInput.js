@@ -1,13 +1,13 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
-import { AuthContext } from '../context/GlobalState';
+import { useAuthContext } from '../context/GlobalState';
 import addMessage from '../utils/addMessage';
 
 const MessageInput = () => {
-  const { user, db } = useContext(AuthContext);
+  const { user, db } = useAuthContext();
   const [message, setMessage] = useState('');
 
   const sendMessage = async (event) => {

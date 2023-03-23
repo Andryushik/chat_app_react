@@ -1,17 +1,17 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import { AuthContext } from '../context/GlobalState';
+import { useAuthContext } from '../context/GlobalState';
 import { styleFab } from '../utils/constants';
 import MessageInput from './MessageInput';
 import NewNotification from './NewNotification';
 import AddChatModal from './AddChatModal';
 
 const FooterBar = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuthContext();
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {

@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react';
+import { useState, createContext, useContext } from 'react';
 import { firebaseConfig } from '../utils/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { initializeApp } from 'firebase/app';
@@ -8,7 +8,8 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const initialState = [];
 
-export const AuthContext = createContext(initialState);
+const AuthContext = createContext(initialState);
+export const useAuthContext = () => useContext(AuthContext);
 
 export const GlobalProvider = ({ children }) => {
   const app = initializeApp(firebaseConfig);
