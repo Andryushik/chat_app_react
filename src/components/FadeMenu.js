@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { HOME_ROUTE, CHAT_ROUTE, LOGIN_ROUTE } from '../utils/constants';
 import { useAuthContext } from '../context/GlobalState';
 import deleteChatHistory from '../utils/deleteChatHistory';
+import { adminUid } from '../utils/constants';
 
 const FadeMenu = () => {
   const navigate = useNavigate();
@@ -93,7 +94,7 @@ const FadeMenu = () => {
           </div>
         )}
 
-        {user?.uid === 'Blqb7GsqY2V3A5TxDWzmjJ0mZ7B2' ? (
+        {user?.uid === adminUid ? (
           <MenuItem
             onClick={() => {
               deleteChatHistory(db);

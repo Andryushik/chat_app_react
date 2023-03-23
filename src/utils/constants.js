@@ -1,6 +1,7 @@
 export const HOME_ROUTE = '/';
 export const LOGIN_ROUTE = '/login';
 export const CHAT_ROUTE = '/chat';
+export const adminUid = process.env.REACT_APP_ADMIN_UID;
 
 export const styleModal = {
   position: 'absolute',
